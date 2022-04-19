@@ -17,8 +17,7 @@ builder.Services.AddDbContext<MySQLContext>(options => options
             new Version(8,0,28))));
 
 IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
-builder.Services.AddSingleton<Mapper>();
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddSingleton(mapper);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
