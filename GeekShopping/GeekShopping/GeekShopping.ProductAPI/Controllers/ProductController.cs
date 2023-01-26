@@ -1,5 +1,7 @@
 ﻿using GeekShopping.ProductAPI.DTO;
 using GeekShopping.ProductAPI.Repository.Interfaces;
+using GeekShopping.ProductAPI.Useful;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GeekShopping.ProductAPI.Controllers
@@ -26,6 +28,7 @@ namespace GeekShopping.ProductAPI.Controllers
 
         [HttpGet]
         [Route("{id}")]
+        [Authorize]
         public async Task<ActionResult<ProductDTO>> Get(int id)
         {
             var product = await _repository.GetById(id);
@@ -35,6 +38,7 @@ namespace GeekShopping.ProductAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult> Post([FromBody] ProductDTO product)
         {
             if (product == null)
@@ -46,6 +50,7 @@ namespace GeekShopping.ProductAPI.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         public async Task<ActionResult> Put([FromBody] ProductDTO product)
         {
             if (product == null)
@@ -56,6 +61,7 @@ namespace GeekShopping.ProductAPI.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles = Role.Admin)]
         [Route("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
