@@ -1,9 +1,6 @@
-﻿using GeekShopping.CartAPI.Model.Base;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace GeekShopping.CartAPI.Data.DTO
+﻿namespace GeekShopping.Web.Models
 {
-    public class CartDetailDTO
+    public class CartDetailViewModel
     {
         public long Id { get; set; }
 
